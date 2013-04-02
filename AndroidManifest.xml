@@ -29,7 +29,7 @@
   
 
     <application
-        android:name="com.navagis.main.RelianceApplication"
+        android:name="com.navagis.main.NavagisApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"

@@ -33,7 +33,7 @@ import com.navagis.api.requests.IServerRequest;
 import com.navagis.constants.Constants;
 import com.navagis.constants.DATETIME_FORMAT;
 import com.navagis.constants.ICON;
-import com.navagis.main.RelianceApplication;
+import com.navagis.main.NavagisApplication;
 import com.navagis.models.Alert;
 
 public final class Util {
@@ -57,7 +57,7 @@ public final class Util {
 	 */
 	public static void logD(String message) {
 		if(message != null) {
-			Log.d(RelianceApplication.TAG(), message);
+			Log.d(NavagisApplication.TAG(), message);
 		}
 	}
 	
@@ -67,7 +67,7 @@ public final class Util {
 	 */
 	public static void logV(String message) {
 		if(message != null) {
-			Log.v(RelianceApplication.TAG(), message);
+			Log.v(NavagisApplication.TAG(), message);
 		}
 	}
 	
@@ -77,7 +77,7 @@ public final class Util {
 	 */
 	public static void logI(String message) {
 		if(message != null) {
-			Log.i(RelianceApplication.TAG(), message);
+			Log.i(NavagisApplication.TAG(), message);
 		}
 	}
 	
@@ -87,7 +87,7 @@ public final class Util {
 	 */
 	public static void logE(String message) {
 		if(message != null) {
-			Log.e(RelianceApplication.TAG(), message);
+			Log.e(NavagisApplication.TAG(), message);
 		}
 	}
 	
@@ -246,7 +246,7 @@ public final class Util {
 	public static void hideKeyboard(View v) {
 		if(v == null) return;
 		
-		InputMethodManager imm = (InputMethodManager)RelianceApplication.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+		InputMethodManager imm = (InputMethodManager)NavagisApplication.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 	}
 	
@@ -326,7 +326,7 @@ public final class Util {
 	
 	public static void generateAlert(final Alert alert, final ServerResultHandler resultHandler) {
 		//convert alert to json
-		String json = RelianceApplication.getGson().toJson(alert);
+		String json = NavagisApplication.getGson().toJson(alert);
 		final AlertRequest request = new AlertRequest();
 		try {
 			request.setJsonRequest(new JSONObject(json));

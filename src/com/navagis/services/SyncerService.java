@@ -19,7 +19,7 @@ import com.navagis.api.CustomHttpClient;
 import com.navagis.api.ServerResponse;
 import com.navagis.api.requests.TracksRequest;
 import com.navagis.daos.real.AssetTrackingDataSource;
-import com.navagis.main.RelianceApplication;
+import com.navagis.main.NavagisApplication;
 import com.navagis.models.AssetTracking;
 import com.navagis.utils.Util;
 
@@ -76,7 +76,7 @@ public class SyncerService extends Service {
 				TracksRequest message = null;
 				try {
 					isSyncing = true;
-					if(!RelianceApplication.isNetworkAvailable())
+					if(!NavagisApplication.isNetworkAvailable())
 						return;
 
 					message = new TracksRequest();

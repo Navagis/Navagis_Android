@@ -14,7 +14,7 @@ import com.navagis.constants.DATETIME_FORMAT;
 import com.navagis.dao.abstracts.DataSourceFactory;
 import com.navagis.daos.real.AssetTrackingDataSource;
 import com.navagis.database.DatabaseAssets.TABLE;
-import com.navagis.main.RelianceApplication;
+import com.navagis.main.NavagisApplication;
 import com.navagis.models.Alert;
 import com.navagis.models.AssetTracking;
 import com.navagis.utils.LocationHandler;
@@ -37,14 +37,14 @@ public class TrackerService extends Service {
 		Util.logD("TrackerService started");
 	
 		// Start location manager
-		locationHandler = RelianceApplication.getLocationHandler();
+		locationHandler = NavagisApplication.getLocationHandler();
 		
 		if(!locationHandler.isGpsTurnedOn()) {
 		    this.stopSelf();
 		}
 		
 		// Check if GPS is enabled 
-		assetId = RelianceApplication.getAssetId();
+		assetId = NavagisApplication.getAssetId();
 		
 		// Start timer to start tracking user location
 		TimerTask timerTask = buildTask();
@@ -144,7 +144,7 @@ public class TrackerService extends Service {
 	
 	private void sendAlert() {
 		// send alert
-		int assetId = RelianceApplication.getAssetId();
+		int assetId = NavagisApplication.getAssetId();
 		
 		Alert alert = new Alert();
 		alert.setMessage("Asset: "+assetId+" is not moving");

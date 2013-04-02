@@ -21,11 +21,8 @@ import com.navagis.api.ServerResponse;
 import com.navagis.api.requests.ApiRequestTask;
 import com.navagis.api.requests.LoginRequest;
 import com.navagis.constants.Constants;
-import com.navagis.main.R;
 import com.navagis.models.User;
-import com.navagis.utils.DebugDialogFragment;
 import com.navagis.utils.Util;
-import com.navagis.utils.DebugDialogFragment.DebugInterface;
 
 
 /**
@@ -150,14 +147,14 @@ public class LoginActivity extends BaseActivity {
 			} catch (JSONException e) {
 				showProgress(false);
 				e.printStackTrace();
-				RelianceApplication.showErrorDialog("Internal error occured: "+e.getMessage());
+				NavagisApplication.showErrorDialog("Internal error occured: "+e.getMessage());
 			}
 		}
 	}
 
 	private void loginTask() throws JSONException {
-		if (!RelianceApplication.isNetworkAvailable()) {
-			RelianceApplication.showErrorDialog(getString(R.string.error_no_connection));
+		if (!NavagisApplication.isNetworkAvailable()) {
+			NavagisApplication.showErrorDialog(getString(R.string.error_no_connection));
 			return;
 		}
 
@@ -174,12 +171,12 @@ public class LoginActivity extends BaseActivity {
 			public void onResponse(ServerResponse result) {
 				showProgress(false);
 				
-				if(result == null) {RelianceApplication.showErrorDialog("Unable to connect to the server"); return;};
+				if(result == null) {NavagisApplication.showErrorDialog("Unable to connect to the server"); return;};
 				
 				if(result.isSuccess()){
-					RelianceApplication.saveAsset(Integer.valueOf(mAssetId), mAssetName);
+					NavagisApplication.saveAsset(Integer.valueOf(mAssetId), mAssetName);
 					
-					RelianceApplication.startActivity(MainActivity.class);
+					NavagisApplication.startActivity(MainActivity.class);
 										
 				} else {
 					
@@ -244,11 +241,11 @@ public class LoginActivity extends BaseActivity {
 		user.setEmail(mAssetId);
 		user.setPassword(mAssetName);
 
-		RelianceApplication.registerUser(user);
+		NavagisApplication.registerUser(user);
 
 	}
 
-	private void setDebugDialog() {
+/*	private void setDebugDialog() {
 		DebugDialogFragment ddf = DebugDialogFragment.getIntance();
 		ddf.setDebugListener(new DebugInterface() {
 
@@ -263,7 +260,7 @@ public class LoginActivity extends BaseActivity {
 		});
 
 		ddf.show(getFragmentManager(), null);
-	}
+	}*/
 
 	public boolean isSkipLogin() {
 		return skipLogin;

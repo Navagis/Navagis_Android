@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.navagis.database.DatabaseAssets.TABLE;
-import com.navagis.main.RelianceApplication;
+import com.navagis.main.NavagisApplication;
 import com.navagis.utils.Util;
 
 public class DatabaseManager{
@@ -22,8 +22,8 @@ public class DatabaseManager{
 	 */
 	private static class DatabaseHelper extends SQLiteOpenHelper{
 
-		private static DatabaseHelper instance = new DatabaseHelper(RelianceApplication.getContext());
-		private static final String DATABASE_NAME = "reliance.db";
+		private static DatabaseHelper instance = new DatabaseHelper(NavagisApplication.getContext());
+		private static final String DATABASE_NAME = "navagis.db";
 		private static final int DATABASE_VERSION = 1;
 
 		private DatabaseHelper(Context context) {

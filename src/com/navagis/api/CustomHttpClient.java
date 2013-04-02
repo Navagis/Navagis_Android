@@ -36,7 +36,7 @@ import com.navagis.api.requests.IServerRequest;
 import com.navagis.utils.Util;
 
 public class CustomHttpClient {
-	private static final String API_URL = "http://evm.navagis.com/RelianceCase3/index.php/";
+	private static final String API_URL = "http://evm.navagis.com/AssetTrackingDemo/index.php/";
 	
 	// time out 
 	private static final int MILLIS_PER_SEC		= 1000;

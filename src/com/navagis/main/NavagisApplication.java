@@ -34,11 +34,11 @@ import com.navagis.services.TrackerService;
 import com.navagis.utils.LocationHandler;
 import com.navagis.utils.Util;
 
-public class RelianceApplication extends Application {
+public class NavagisApplication extends Application {
 	private static Context context;
 	private static LocationHandler locationHandler;
 	private static SharedPreferences sharedPreferences;
-	private static RelianceApplication instance = new RelianceApplication();
+	private static NavagisApplication instance = new NavagisApplication();
 	private static Activity currentActivity;
 	private static String currentDeviceId;
 	private static Gson gson;
@@ -46,7 +46,7 @@ public class RelianceApplication extends Application {
 	// Application package name
 	public static String PACKAGE_NAME;
 
-	public static RelianceApplication getInstance() {
+	public static NavagisApplication getInstance() {
 		return instance;
 	}
 
@@ -92,7 +92,7 @@ public class RelianceApplication extends Application {
 	}
 
 	public static void setCurrentActivity(Activity currentActivity) {
-		RelianceApplication.currentActivity = currentActivity;
+		NavagisApplication.currentActivity = currentActivity;
 	}
 
 	public static String getCurrentDeviceId() {
@@ -168,7 +168,7 @@ public class RelianceApplication extends Application {
 	}
 
 	public static void setActivityTime() {
-		SharedPreferences.Editor spe = RelianceApplication.sharedPreferences.edit();
+		SharedPreferences.Editor spe = NavagisApplication.sharedPreferences.edit();
 		spe.putLong(Constants.LAST_ACTIVITY_TIME, new Date().getTime());
 		spe.commit();
 
@@ -183,13 +183,13 @@ public class RelianceApplication extends Application {
 	}
 
 	public static void clearLastActivityTime() {
-		SharedPreferences.Editor spe = RelianceApplication.sharedPreferences.edit();
+		SharedPreferences.Editor spe = NavagisApplication.sharedPreferences.edit();
 		spe.remove(Constants.LAST_ACTIVITY_TIME);
 		spe.commit();
 	}
 
 	public static void registerUser(final User user) {
-		SharedPreferences.Editor e = RelianceApplication.getSharedPreferences().edit();
+		SharedPreferences.Editor e = NavagisApplication.getSharedPreferences().edit();
 		e.putString(Constants.KEY_USER_EMAIL, user.getEmail());
 		e.putString(Constants.KEY_USER_PASSWORD, user.getPassword());
 		e.commit();
@@ -326,7 +326,7 @@ public class RelianceApplication extends Application {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				RelianceApplication.logOut();
+				NavagisApplication.logOut();
 			}
 		}).create().show();
 	}

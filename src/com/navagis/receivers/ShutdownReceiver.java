@@ -7,7 +7,7 @@ import android.content.Intent;
 import com.navagis.api.ServerResponse;
 import com.navagis.constants.ALERT;
 import com.navagis.constants.DATETIME_FORMAT;
-import com.navagis.main.RelianceApplication;
+import com.navagis.main.NavagisApplication;
 import com.navagis.models.Alert;
 import com.navagis.utils.LocationHandler;
 import com.navagis.utils.ServerResultHandler;
@@ -17,7 +17,7 @@ public class ShutdownReceiver extends BroadcastReceiver {
 	private LocationHandler locationHandler;
 	
 	public ShutdownReceiver() {
-		locationHandler = RelianceApplication.getLocationHandler();
+		locationHandler = NavagisApplication.getLocationHandler();
 	}
 
     @Override
@@ -27,11 +27,11 @@ public class ShutdownReceiver extends BroadcastReceiver {
 			this.abortBroadcast();
 		}
     	
-    	int assetId = RelianceApplication.getAssetId();
+    	int assetId = NavagisApplication.getAssetId();
     	
     	// send alert
 		Alert alert = new Alert();
-		alert.setMessage("Device: "+RelianceApplication.getDeviceId()+" with Asset Id:"+assetId+" is shutting down");
+		alert.setMessage("Device: "+NavagisApplication.getDeviceId()+" with Asset Id:"+assetId+" is shutting down");
 		alert.setTitle(ALERT.TITLE_DEVICE_OFF.toString());
 		alert.setAssetId(assetId);
 		alert.setEmail(ALERT.EMAIL.toString());

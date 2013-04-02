@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		
 		gson = new Gson();
 		
-		locationHandler = RelianceApplication.getLocationHandler();
+		locationHandler = NavagisApplication.getLocationHandler();
 		startWaypointsTask();
 	}
 	
@@ -92,7 +92,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
     			public void onClick(DialogInterface dialog, int which) {
     				dialog.cancel();
     				enableCheckInButton(false);
-    				RelianceApplication.stopBackgroundServices();
+    				NavagisApplication.stopBackgroundServices();
     			}
     		})
     		.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener(){
@@ -103,7 +103,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
     		}).create().show();
     		
 		} else {
-	    	RelianceApplication.startBackgroundServices();
+	    	NavagisApplication.startBackgroundServices();
 			enableCheckInButton(true);
 		}
 	}
@@ -147,7 +147,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
 		case R.id.menu_sign_out:
-			RelianceApplication.promptLogOutAlert();
+			NavagisApplication.promptLogOutAlert();
 			break;
 		default:
 			return false;
@@ -158,7 +158,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 
 	@Override
 	public void onBackPressed() {
-		RelianceApplication.promptLogOutAlert();
+		NavagisApplication.promptLogOutAlert();
 	}
 
 	@Override
@@ -196,7 +196,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			extraInfo = extraInfoEt.getText().toString();
 		
 		if(errorMessage != "") {
-			RelianceApplication.showErrorDialog(errorMessage);
+			NavagisApplication.showErrorDialog(errorMessage);
 			return false;
 		} else {
 			String curTime = Util.getCurrentDateTime(DATETIME_FORMAT.SERVER);
@@ -206,7 +206,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			materialDrops.setStoreAddress(storeSpinner.getSelectedItem().toString());
 			materialDrops.setLat(locationHandler.getLatitude());
 			materialDrops.setLng(locationHandler.getLongitude());
-			materialDrops.setAsset_id(RelianceApplication.getAssetId());
+			materialDrops.setAsset_id(NavagisApplication.getAssetId());
 			materialDrops.setCreateTime(curTime);
 			
 			Util.logD(storeSpinner.getSelectedItem().toString());
@@ -218,8 +218,8 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		
 		if(!validateFields())
 			return;
-		else if(!RelianceApplication.isNetworkAvailable()) {
-			RelianceApplication.showErrorDialog("No network connection");
+		else if(!NavagisApplication.isNetworkAvailable()) {
+			NavagisApplication.showErrorDialog("No network connection");
 			return;
 		}
 
@@ -235,7 +235,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 	}
 	
 	private void startWaypointsTask() {
-		int assetId = RelianceApplication.getAssetId();
+		int assetId = NavagisApplication.getAssetId();
 		JSONObject js = new JSONObject();
 		try {
 			js.put("asset_id", assetId);
@@ -252,7 +252,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 				waypointsDialog.dismiss();
 				
 				if(result == null) {
-					RelianceApplication.showErrorDialog("Unable to connect to the server"); 
+					NavagisApplication.showErrorDialog("Unable to connect to the server"); 
 					return;
 					};
 				
@@ -275,7 +275,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 					}
 				} else {
 					enableStoreAddress(false);
-					RelianceApplication.showAlertDialog("No Stores Found", "Unable to find store locations for this asset");
+					NavagisApplication.showAlertDialog("No Stores Found", "Unable to find store locations for this asset");
 				}
 			}
 			@Override
@@ -294,13 +294,13 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 
 				materialDropDialog.dismiss();
 				
-				if(result == null) {RelianceApplication.showErrorDialog("Unable to connect to the server"); return;};
+				if(result == null) {NavagisApplication.showErrorDialog("Unable to connect to the server"); return;};
 				
 				if(result.isSuccess()){
 					clearFields();
-					RelianceApplication.showToast("Success");										
+					NavagisApplication.showToast("Success");										
 				} else {
-					RelianceApplication.showErrorDialog(result.getErrorMessage());
+					NavagisApplication.showErrorDialog(result.getErrorMessage());
 				}
 			}
 			

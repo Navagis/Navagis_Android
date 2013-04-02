@@ -11,7 +11,7 @@ import com.navagis.dao.abstracts.AbstractDataSource;
 import com.navagis.dao.abstracts.IMaterialDropsDataSource;
 import com.navagis.database.DatabaseAssets.COLUMN;
 import com.navagis.database.DatabaseAssets.TABLE;
-import com.navagis.main.RelianceApplication;
+import com.navagis.main.NavagisApplication;
 import com.navagis.models.MaterialDrops;
 import com.navagis.utils.Util;
 
@@ -68,7 +68,7 @@ public class MaterialDropsDataSource extends AbstractDataSource implements IMate
 	@Override
 	public void insertPacketId(Integer packetId) {
 		try {
-			int assetId = RelianceApplication.getAssetId();
+			int assetId = NavagisApplication.getAssetId();
 			
 			ContentValues values = new ContentValues();
 			values.put(COLUMN.PACKET_ID.name, packetId);
