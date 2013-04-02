@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        style="@style/MainContainer"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/labelMaterialName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Material Name:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/dropName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:singleLine="true" >
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/labelStore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Store Address:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/storeSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/labelExtraInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Extra Info:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/extraInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:singleLine="true" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/checkInButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="16dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:text="@string/action_check_in" />
+        
+    </LinearLayout>
+
+</RelativeLayout>

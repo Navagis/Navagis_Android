@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Dummy Emails -->
+    <string-array name="assetIds">
+        <item>7</item>
+        <item>6</item>
+    </string-array>
+    
+    <!-- Dummy Passwords -->
+    <string-array name="assetNames">
+        <item>Asset 1</item>
+        <item>Asset 2</item>
+    </string-array>
+
+</resources>

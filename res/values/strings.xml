@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Reliance</string>
+    <string name="label_email"><b>Email</b></string>
+    <string name="label_password"><b>Password</b></string>
+    <string name="title_asset_detail">Asset Detail</string>
+    <string name="title_asset_list">Assets</string>
+    <string name="error_no_connection">No network connection</string>
+	
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <string name="menu_sign_out">Sign Out</string>
+    <string name="title_activity_main">Check In</string>
+    <string name="action_check_in"><b>Check In</b></string>
+</resources>
