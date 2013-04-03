@@ -1,19 +1,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity" >
-
-    <LinearLayout
-        style="@style/MainContainer"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical" >
+    tools:context=".MainActivity"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp" >
 
         <TextView
             android:id="@+id/labelMaterialName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Material Name:"
+            android:text="@string/material_name"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
@@ -23,7 +21,8 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:maxLines="1"
-            android:singleLine="true" >
+            android:singleLine="true"
+            android:layout_below="@+id/labelMaterialName" >
 
             <requestFocus />
         </EditText>
@@ -32,24 +31,27 @@
             android:id="@+id/labelStore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Store Address:"
+            android:text="@string/store_address"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_below="@+id/dropName" />
 
         <Spinner
             android:id="@+id/storeSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium" 
+            android:layout_below="@+id/labelStore"/>
 
         <TextView
             android:id="@+id/labelExtraInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Extra Info:"
+            android:text="@string/extra_info"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            android:textStyle="bold" 
+            android:layout_below="@+id/storeSpinner"/>
 
         <EditText
             android:id="@+id/extraInfo"
@@ -57,7 +59,8 @@
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:minLines="3"
-            android:singleLine="true" >
+            android:singleLine="true" 
+            android:layout_below="@+id/labelExtraInfo">
 
             <requestFocus />
         </EditText>
@@ -66,12 +69,11 @@
             android:id="@+id/checkInButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="16dp"
+            android:layout_alignRight="@+id/extraInfo"
+            android:layout_below="@+id/extraInfo"
+            android:layout_marginTop="30dp"
             android:paddingLeft="32dp"
             android:paddingRight="32dp"
             android:text="@string/action_check_in" />
         
-    </LinearLayout>
-
 </RelativeLayout>

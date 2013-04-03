@@ -43,7 +43,7 @@
                 android:id="@+id/asset_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Asset ID"
+                android:hint="@string/asset_id"
                 android:maxLines="1"
                 android:inputType="number"
                 android:singleLine="true" />
@@ -52,7 +52,7 @@
                 android:id="@+id/asset_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Asset Name"
+                android:hint="@string/asset_name"
                 android:imeActionId="@+id/asset_name"
                 android:imeActionLabel="@string/action_sign_in"
                 android:imeOptions="actionUnspecified"

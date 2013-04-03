@@ -11,5 +11,7 @@
     <string name="error_incorrect_asset_name">This asset name is incorrect</string>
     <string name="error_incorrect_asset_id">This asset id is incorrect</string>
     <string name="error_field_required">This field is required</string>
+    <string name="asset_id">Asset ID</string>
+    <string name="asset_name">Asset Name</string>
 
 </resources>
