@@ -10,10 +10,5 @@ public final class Constants {
 	//Asset
 	public static final String KEY_ASSET_ID = "asset_id";
 	public static final String KEY_ASSET_NAME = "asset_name";
-	
-	//Alert
-	public static final String KEY_MESSAGE = "message";
-	public static final String KEY_TITLE = "title";
-	public static final String KEY_EMAIL = "email";
 
 }

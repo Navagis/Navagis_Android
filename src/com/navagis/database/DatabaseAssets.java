@@ -1,9 +1,14 @@
 package com.navagis.database;
 
+import java.util.ArrayList;
+
 
 public final class DatabaseAssets {
 
-	static final String COMMA = ", ";
+	static final String COMMA = ", ", DROP_TABLE_IF_EXISTS = "DROP TABLE IF EXISTS ";
+	private static ArrayList<String> createQueries = new ArrayList<String>();
+	private static ArrayList<String> deleteQueries = new ArrayList<String>();
+	
 
 	public enum COLUMN {
 
@@ -160,5 +165,29 @@ public final class DatabaseAssets {
     public static final String DELETE_USERS = "DELETE FROM "+TABLE.USER;
     public static final String DELETE_ALERTS = "DELETE FROM "+TABLE.ALERT;
     public static final String DELETE_MATERIAL_DROPS = "DELETE FROM "+TABLE.MATERIAL_DROPS;
+    public static final String DELETE_DEVICE = "DELETE FROM "+TABLE.DEVICE;
+    
+    public static ArrayList<String> CREATE_QUERIES() {
+        createQueries.add(CREATE_ALERT);
+        createQueries.add(CREATE_ASSET);
+        createQueries.add(CREATE_ASSET_TRACKING);
+        createQueries.add(CREATE_DEVICE);
+        createQueries.add(CREATE_DROPS);
+        createQueries.add(CREATE_USER);
+
+        return createQueries;
+    }
+
+    public static ArrayList<String> DELETE_QUERIES() {
+        deleteQueries.add(DELETE_ALERTS);
+        deleteQueries.add(DELETE_ASSETS);
+        deleteQueries.add(DELETE_ASSET_TRACKINGS);
+        deleteQueries.add(DELETE_DEVICE);
+        deleteQueries.add(DELETE_MATERIAL_DROPS);
+        deleteQueries.add(DELETE_USERS);
+        
+        return deleteQueries;
+    }
+
 	
 }

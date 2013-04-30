@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component jdk="Android 4.0.3 Platform" jdk_type="Android SDK">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="activation.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/activation.jar!/"/>
+	</lib>
+	<lib name="additionnal.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/additionnal.jar!/"/>
+	</lib>
+	<lib name="android-async-http-1.4.3.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/android-async-http-1.4.3.jar!/"/>
+	</lib>
+	<lib name="android-support-v4.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/android-support-v4.jar!/"/>
+	</lib>
+	<lib name="commons-io-2.4.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/commons-io-2.4.jar!/"/>
+	</lib>
+	<lib name="gson-2.2.2.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/gson-2.2.2.jar!/"/>
+	</lib>
+	<lib name="httpclient-4.2.2.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/httpclient-4.2.2.jar!/"/>
+	</lib>
+	<lib name="httpcore-4.2.2.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/httpcore-4.2.2.jar!/"/>
+	</lib>
+	<lib name="httpmime-4.2.2.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/httpmime-4.2.2.jar!/"/>
+	</lib>
+	<lib name="joda-time-2.1.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/joda-time-2.1.jar!/"/>
+	</lib>
+	<lib name="mail.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/libs/mail.jar!/"/>
+	</lib>
+</component>

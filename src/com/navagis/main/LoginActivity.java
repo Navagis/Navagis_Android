@@ -22,6 +22,8 @@ import com.navagis.api.requests.ApiRequestTask;
 import com.navagis.api.requests.LoginRequest;
 import com.navagis.constants.Constants;
 import com.navagis.models.User;
+import com.navagis.utils.DebugDialogFragment;
+import com.navagis.utils.DebugDialogFragment.DebugInterface;
 import com.navagis.utils.Util;
 
 
@@ -45,7 +47,6 @@ public class LoginActivity extends BaseActivity {
 	private View mLoginFormView;
 	private View mLoginStatusView;
 	private TextView mLoginStatusMessageView;
-	private boolean skipLogin;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +96,7 @@ public class LoginActivity extends BaseActivity {
 	protected void onResume() {
 		super.onResume();
 
-//		setDebugDialog();
+		//		setDebugDialog();
 	}
 
 	/**
@@ -132,7 +133,7 @@ public class LoginActivity extends BaseActivity {
 			focusView = mAssetIdView;
 			cancel = true;
 		} 
-		
+
 		if (cancel) {
 			// There was an error; don't attempt login and focus the first
 			// form field with an error.
@@ -141,7 +142,7 @@ public class LoginActivity extends BaseActivity {
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
 			mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
-			
+
 			try {
 				loginTask();
 			} catch (JSONException e) {
@@ -161,40 +162,40 @@ public class LoginActivity extends BaseActivity {
 		JSONObject jsRequest = new JSONObject();
 		jsRequest.put(Constants.KEY_ASSET_ID, Integer.valueOf(mAssetId));
 		jsRequest.put(Constants.KEY_ASSET_NAME, mAssetName);
-		
+
 		LoginRequest loginRequest = new LoginRequest();
 		loginRequest.setJsonRequest(jsRequest);
-		
+
 		new ApiRequestTask(new IApiResponseHandler() {
-			
+
 			@Override
 			public void onResponse(ServerResponse result) {
 				showProgress(false);
-				
-				if(result == null) {NavagisApplication.showErrorDialog("Unable to connect to the server"); return;};
-				
+
+				if(result == null) {NavagisApplication.showErrorDialog("Unable to connect to the server"); return;}
+
 				if(result.isSuccess()){
 					NavagisApplication.saveAsset(Integer.valueOf(mAssetId), mAssetName);
-					
+
 					NavagisApplication.startActivity(MainActivity.class);
-										
+
 				} else {
-					
+
 					mAssetNameView.setError(getString(R.string.error_incorrect_asset_name));
 					mAssetIdView.setError(getString(R.string.error_incorrect_asset_id));
-					
+
 					mAssetNameView.requestFocus();
 					Util.logE(result.getErrorMessage());
 				}
-					
+
 			}
-			
+
 			@Override
 			public void onPreExecute() {
 				showProgress(true);
 			}
 		}).execute(loginRequest);
-		
+
 	}
 
 	/**
@@ -235,39 +236,6 @@ public class LoginActivity extends BaseActivity {
 			mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
 		}
 	}
-	
-	public void registerUser() {
-		User user = new User();
-		user.setEmail(mAssetId);
-		user.setPassword(mAssetName);
 
-		NavagisApplication.registerUser(user);
-
-	}
-
-/*	private void setDebugDialog() {
-		DebugDialogFragment ddf = DebugDialogFragment.getIntance();
-		ddf.setDebugListener(new DebugInterface() {
-
-			@Override
-			public void result(boolean isSkipLogin, String foreman, String crewCode) {
-				setSkipLogin(isSkipLogin);
-				mAssetIdView.setText(foreman);
-				mAssetNameView.setText(crewCode);
-
-				attemptLogin();
-			}
-		});
-
-		ddf.show(getFragmentManager(), null);
-	}*/
-
-	public boolean isSkipLogin() {
-		return skipLogin;
-	}
-
-	public void setSkipLogin(boolean skipLogin) {
-		this.skipLogin = skipLogin;
-	}
 
 }

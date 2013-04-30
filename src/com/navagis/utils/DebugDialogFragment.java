@@ -17,6 +17,8 @@ public class DebugDialogFragment extends DialogFragment{
 	private Spinner passSpinner;
 	private CheckBox skipLogin;
 	private DebugInterface di;
+	public static final String TAG = "ddf";
+
 	private static DebugDialogFragment instance = new DebugDialogFragment();
 	
 	public static DebugDialogFragment getIntance() {

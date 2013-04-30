@@ -36,13 +36,9 @@ public class DatabaseManager{
 
 		@Override
 		public void onCreate(SQLiteDatabase database) {
-			database.execSQL(DatabaseAssets.CREATE_ALERT);
-			database.execSQL(DatabaseAssets.CREATE_ASSET);
-			database.execSQL(DatabaseAssets.CREATE_ASSET_TRACKING);
-			database.execSQL(DatabaseAssets.CREATE_USER);
-			database.execSQL(DatabaseAssets.CREATE_DEVICE);
-			database.execSQL(DatabaseAssets.CREATE_DROPS);
-
+			for(String createQuery: DatabaseAssets.CREATE_QUERIES()) {
+				database.execSQL(createQuery);
+			}
 		}
 
 		@Override
@@ -63,12 +59,9 @@ public class DatabaseManager{
 					+ " to "
 					+ newVersion + ", which will destroy all old data");
 
-			db.execSQL("DROP TABLE IF EXISTS "+ TABLE.ALERT);
-			db.execSQL("DROP TABLE IF EXISTS "+ TABLE.ASSET);
-			db.execSQL("DROP TABLE IF EXISTS "+ TABLE.ASSET_TRACKING);
-			db.execSQL("DROP TABLE IF EXISTS "+ TABLE.USER);
-			db.execSQL("DROP TABLE IF EXISTS "+ TABLE.DEVICE);
-			db.execSQL("DROP TABLE IF EXISTS "+ TABLE.MATERIAL_DROPS);
+			for(TABLE table: TABLE.values()) {
+				db.execSQL(DatabaseAssets.DROP_TABLE_IF_EXISTS+ table.name);
+			}
 
 			onCreate(db);
 		}
@@ -82,11 +75,9 @@ public class DatabaseManager{
 		SQLiteDatabase db = getWritableDb();
 		try {
 			db.beginTransaction();
-			db.execSQL(DatabaseAssets.DELETE_ASSETS);
-			db.execSQL(DatabaseAssets.DELETE_ALERTS);
-			db.execSQL(DatabaseAssets.DELETE_ASSET_TRACKINGS);
-			db.execSQL(DatabaseAssets.DELETE_USERS);
-			db.execSQL(DatabaseAssets.DELETE_MATERIAL_DROPS);
+			for(String deleteQuery: DatabaseAssets.DELETE_QUERIES()) {
+				db.execSQL(deleteQuery);
+			}
 			db.setTransactionSuccessful();
 		}
 		catch(SQLException e)
